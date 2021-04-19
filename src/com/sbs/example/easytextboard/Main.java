@@ -22,33 +22,35 @@ public class Main {
 			System.out.printf("명령어) ");
 			String command = scanner.nextLine();
 			
-			if (command.equals("article detail 1")) {
-				int inputedId = 1;
+			if (command.startsWith("article detail ")) {
+				int inputedId = Integer.parseInt(command.split(" ")[2]);
+				
 				System.out.println("== 게시물 상세 ==");
 				
-				if (article1__id == 0) {
-					System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
-					continue;
+				if (inputedId == 1) {
+					if (article1__id == 0) {
+						System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
+						continue;
+					}
+					
+					System.out.printf("번호 : %s\n", article1__id);
+					System.out.printf("제목 : %s\n", article1__title);
+					System.out.printf("내용 : %s\n", article1__body);
 				}
-				
-				System.out.printf("번호 : %s\n", article1__id);
-				System.out.printf("제목 : %s\n", article1__title);
-				System.out.printf("내용 : %s\n", article1__body);
-			}
-			else if (command.equals("article detail 2")) {
-				int inputedId = 2;
-				System.out.println("== 게시물 상세 ==");
-				
-				if (article2__id == 0) {
-					System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
-					continue;
+			else if (inputedId == 2) {
+					if (article2__id == 0) {
+						System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
+						continue;
+					}
+					
+					System.out.printf("번호 : %s\n", article2__id);
+					System.out.printf("제목 : %s\n", article2__title);
+					System.out.printf("내용 : %s\n", article2__body);
 				}
-				
-				System.out.printf("번호 : %s\n", article2__id);
-				System.out.printf("제목 : %s\n", article2__title);
-				System.out.printf("내용 : %s\n", article2__body);
+			else {
+				System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
 			}
-			
+			}
 			else if (command.equals("article list")) {
 				System.out.println("== 게시물 리스트 ==");
 				
