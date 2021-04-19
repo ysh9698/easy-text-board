@@ -22,7 +22,34 @@ public class Main {
 			System.out.printf("명령어) ");
 			String command = scanner.nextLine();
 			
-			if (command.equals("article list")) {
+			if (command.equals("article detail 1")) {
+				int inputedId = 1;
+				System.out.println("== 게시물 상세 ==");
+				
+				if (article1__id == 0) {
+					System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
+					continue;
+				}
+				
+				System.out.printf("번호 : %s\n", article1__id);
+				System.out.printf("제목 : %s\n", article1__title);
+				System.out.printf("내용 : %s\n", article1__body);
+			}
+			else if (command.equals("article detail 2")) {
+				int inputedId = 2;
+				System.out.println("== 게시물 상세 ==");
+				
+				if (article2__id == 0) {
+					System.out.printf("%d번 게시물은 존재하지 않습니다. \n", inputedId);
+					continue;
+				}
+				
+				System.out.printf("번호 : %s\n", article2__id);
+				System.out.printf("제목 : %s\n", article2__title);
+				System.out.printf("내용 : %s\n", article2__body);
+			}
+			
+			else if (command.equals("article list")) {
 				System.out.println("== 게시물 리스트 ==");
 				
 				if (lastArticleId == 0) {
