@@ -87,12 +87,12 @@ public class App {
 				int inputedId = Integer.parseInt(command.split(" ")[2]);
 				System.out.println("== 게시물 상세 ==");
 				
-				if ( lastArticleId == 0 || inputedId > lastArticleId ) {
-					System.out.println("게시물이 존재하지 않습니다.");
+                Article article = getArticle(inputedId);
+                
+                if ( article == null ) {
+					System.out.printf("%d번 게시물은 존재하지 않습니다.\n", inputedId);
 					continue;
 				}
-				
-                Article article = getArticle(inputedId);
 				
 				System.out.printf("번호 : %d\n", article.id);
 				System.out.printf("제목 : %s\n", article.title);
