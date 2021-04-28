@@ -3,9 +3,20 @@ package com.sbs.example.easytextboard;
 import java.util.Scanner;
 
 public class App {
-	private Article[] articles = new Article[2];
-	private int lastArticleId = 0;
-	private int articlesSize = 0;
+	private Article[] articles;
+	private int lastArticleId;
+	private int articlesSize;
+	
+	public void init() {
+		articles = new Article[32];
+		lastArticleId = 0;
+		articlesSize = 0;
+		
+		
+		for (int i = 0; i < 32; i++) {
+			add("제목" + (i + 1), "내용" + (i + 1));
+		}
+	}
 	
 	private int articlesSize() {
 		return articlesSize;
@@ -182,6 +193,7 @@ public class App {
 				System.out.printf("%d번 게시물이 삭제되었습니다.\n", inputedId);
 			}
 		}
+		
 		sc.close();
 	}
 }
