@@ -4,39 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sbs.example.easytextboard.controller.MemberController;
+import com.sbs.example.easytextboard.dto.Article;
+import com.sbs.example.easytextboard.dto.Member;
+
 public class App {
 	private List<Article> articles;
-	private List<Member> members;
 	private int lastArticleId;
-	private int lastMemberId;
-
+	
 	public App() {
 		lastArticleId = 0;
-		lastMemberId = 0;
 		articles = new ArrayList<>();
-		members = new ArrayList<>();
 
 		for (int i = 0; i < 32; i++) {
 			add("제목" + (i + 1), "내용" + (i + 1));
 		}
 	}
-
-	// 회원관련 시작
-
-	private int join(String loginId, String loginPw, String name) {
-		Member member = new Member();
-
-		member.id = lastMemberId + 1;
-		member.loginId = loginId;
-		member.loginPw = loginPw;
-		member.name = name;
-		members.add(member);
-		lastMemberId = member.id;
-
-		return member.id;
-	}
-
-	// 회원관련 끝
 
 	// 게시물관련 시작
 	private Article getArticle(int id) {
@@ -94,6 +77,8 @@ public class App {
 	// 가장 상위층 시작
 	public void run() {
 		Scanner sc = new Scanner(System.in);
+		
+		MemberController memberController = new MemberController();
 
 		while (true) {
 
@@ -104,22 +89,7 @@ public class App {
 				System.out.println("== 프로그램 종료 ==");
 				break;
 			} else if (command.equals("member join")) {
-				System.out.println("== 회원가입 ==");
-
-				String loginId;
-				String loginPw;
-				String name;
-
-				System.out.printf("로그인아이디 : ");
-				loginId = sc.nextLine();
-				System.out.printf("로그인비번 : ");
-				loginPw = sc.nextLine();
-				System.out.printf("이름 : ");
-				name = sc.nextLine();
-
-				int id = join(loginId, loginPw, name);
-
-				System.out.printf("%d번 회원이 생성되었습니다.\n", id);
+				memberController.run(sc, command);
 			} else if (command.equals("article add")) {
 				System.out.println("== 게시물 등록 ==");
 
