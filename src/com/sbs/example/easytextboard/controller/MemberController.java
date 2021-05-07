@@ -30,22 +30,24 @@ public class MemberController extends Controller {
 	}
 
 	public void run(Scanner sc, String command) {
-		System.out.println("== 회원가입 ==");
+		if (command.equals("member join")) {
+			System.out.println("== 회원가입 ==");
 
-		String loginId;
-		String loginPw;
-		String name;
+			String loginId;
+			String loginPw;
+			String name;
 
-		System.out.printf("로그인아이디 : ");
-		loginId = sc.nextLine();
-		System.out.printf("로그인비번 : ");
-		loginPw = sc.nextLine();
-		System.out.printf("이름 : ");
-		name = sc.nextLine();
+			System.out.printf("로그인아이디 : ");
+			loginId = sc.nextLine();
+			System.out.printf("로그인비번 : ");
+			loginPw = sc.nextLine();
+			System.out.printf("이름 : ");
+			name = sc.nextLine();
 
-		int id = join(loginId, loginPw, name);
+			int id = join(loginId, loginPw, name);
 
-		System.out.printf("%d번 회원이 생성되었습니다.\n", id);
+			System.out.printf("%d번 회원이 생성되었습니다.\n", id);
+		}
 	}
 
 }
