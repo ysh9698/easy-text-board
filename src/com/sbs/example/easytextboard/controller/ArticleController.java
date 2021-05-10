@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sbs.example.easytextboard.container.Container;
 import com.sbs.example.easytextboard.dto.Article;
 
 public class ArticleController {
