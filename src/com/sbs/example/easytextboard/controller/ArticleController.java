@@ -77,6 +77,11 @@ public class ArticleController {
 	public void run(Scanner sc, String command) {
 		if (command.equals("article add")) {
 			System.out.println("== 게시물 등록 ==");
+			
+			if ( Container.session.isLogout() ) {
+				System.out.println("로그인 후 이용해주세요.");
+				return;
+			}
 
 			String title;
 			String body;
@@ -199,9 +204,14 @@ public class ArticleController {
 			System.out.printf("제목 : %s\n", article.title);
 			System.out.printf("내용 : %s\n", article.body);
 		} else if (command.startsWith("article modify ")) {
-			int inputedId = Integer.parseInt(command.split(" ")[2]);
+			if ( Container.session.isLogout() ) {
+				System.out.println("로그인 후 이용해주세요.");
+				return;
+			}
+			
 			System.out.println("== 게시물 수정 ==");
 
+			int inputedId = Integer.parseInt(command.split(" ")[2]);
 			Article article = getArticle(inputedId);
 
 			if (article == null) {
@@ -220,8 +230,14 @@ public class ArticleController {
 			System.out.printf("%d번 게시물이 수정되었습니다.\n", inputedId);
 
 		} else if (command.startsWith("article delete ")) {
-			int inputedId = Integer.parseInt(command.split(" ")[2]);
 			System.out.println("== 게시물 삭제 ==");
+			
+			if ( Container.session.isLogout() ) {
+				System.out.println("로그인 후 이용해주세요.");
+				return;
+			}
+			
+			int inputedId = Integer.parseInt(command.split(" ")[2]);
 
 			Article article = getArticle(inputedId);
 
