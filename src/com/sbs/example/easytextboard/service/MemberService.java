@@ -1,29 +1,16 @@
 package com.sbs.example.easytextboard.service;
 
-import com.sbs.example.easytextboard.container.Container;
-import com.sbs.example.easytextboard.dao.MemberDao;
-import com.sbs.example.easytextboard.dto.Member;
+import com.sbs.example.easytextboard.Dao.MemberDao;
 
 public class MemberService {
 	private MemberDao memberDao;
-
+	
 	public MemberService() {
-		memberDao = Container.memberDao;
-	}
-
-	public Member getMemberByLoginId(String loginId) {
-		return memberDao.getMemberByLoginId(loginId);
+		memberDao = new MemberDao();
 	}
 
 	public int join(String loginId, String loginPw, String name) {
 		return memberDao.join(loginId, loginPw, name);
 	}
 
-	private boolean isExistsLoginId(String loginId) {
-		return memberDao.isExistsLoginId(loginId);
-	}
-
-	public boolean isJoinAvailabelLoginId(String loginId) {
-		return memberDao.isJoinAvailabelLoginId(loginId);
-	}
 }
