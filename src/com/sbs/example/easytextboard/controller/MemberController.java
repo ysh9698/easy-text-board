@@ -32,6 +32,13 @@ public class MemberController {
 		System.out.printf("로그인아이디 : ");
 		loginId = sc.nextLine();
 		
+		boolean isJoinableLoginId = memberService.isJoinableLoginId(loginId);
+		
+		if (isJoinableLoginId == false) {
+			System.out.printf("%s(은)는 이미 사용중인 로그인아이디 입니다.\n", loginId);
+			return;
+		}
+		
 		System.out.printf("로그인비번 : ");
 		loginPw = sc.nextLine();
 		
