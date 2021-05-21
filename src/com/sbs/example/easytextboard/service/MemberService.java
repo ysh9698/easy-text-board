@@ -24,4 +24,12 @@ public class MemberService {
 		return true;
 
  }
+
+	public Member getMemberByloginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
+	}
+
+	public Member getMemberById(int Id) {
+		return memberDao.getMemberById(Id);
+	}
 }
