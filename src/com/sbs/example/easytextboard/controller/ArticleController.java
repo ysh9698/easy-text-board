@@ -1,7 +1,9 @@
 package com.sbs.example.easytextboard.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
+import com.sbs.example.easytextboard.Dto.Article;
 import com.sbs.example.easytextboard.container.Container;
 import com.sbs.example.easytextboard.service.ArticleService;
 
@@ -15,9 +17,22 @@ public class ArticleController {
 	public void doCommand(String cmd) {
 		if (cmd.equals("article add")) {
 			add(cmd);
-		} 
+		}
+		else if (cmd.equals("article list")) {
+			list(cmd);
+		}
 	}
 	
+	private void list(String cmd) {
+		List<Article> articles = articleService.getForPrintArticles();
+		
+		System.out.println("번호 / 작성자 / 제목");
+		
+		for (Article article : articles) {
+			System.out.printf("%d / %d / %s\n", article.id, article.memberId, article.title);
+		}
+	}
+
 	private void add(String cmd) {
 		if (Container.session.isLogined() == false) {
 			System.out.println("로그인 후 이용해주세요.");

@@ -1,6 +1,9 @@
 package com.sbs.example.easytextboard.service;
 
+import java.util.List;
+
 import com.sbs.example.easytextboard.Dao.ArticleDao;
+import com.sbs.example.easytextboard.Dto.Article;
 
 public class ArticleService {
 
@@ -14,4 +17,8 @@ public class ArticleService {
 		return articleDao.write(memberId, title, body);
 	}
 
+	public List<Article> getForPrintArticles() {
+		return articleDao.getForPrintArticles();
+	}
+	
 }
