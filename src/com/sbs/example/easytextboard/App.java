@@ -18,6 +18,13 @@ public class App {
 		articleController = Container.articleController;
 
 		makeTestData();
+		
+		init();
+	}
+
+	private void init() {
+		ArticleService articleService = Container.articleService;
+		Container.session.selectedBoardId = articleService.getFirstBoardId();
 	}
 
 	private void makeTestData() {

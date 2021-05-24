@@ -51,4 +51,18 @@ public class ArticleDao {
 		return board.id;
 	}
 
+	public Board getBoardById(int boardId) {
+		for (Board board : boards) {
+			if (board.id == boardId) {
+				return board;
+			}
+		}
+
+		return null;
+	}
+
+	public List<Board> getBoards() {
+		return boards;
+	}
+
 }
