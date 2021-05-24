@@ -3,6 +3,7 @@ package com.sbs.example.easytextboard.session;
 public class Session {
 
 	public int loginedMemberId;
+	public int selectedBoardId;
 	
 	public Session() {
 		loginedMemberId = 0;

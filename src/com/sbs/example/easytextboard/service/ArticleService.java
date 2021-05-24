@@ -8,13 +8,13 @@ import com.sbs.example.easytextboard.Dto.Article;
 public class ArticleService {
 
 	private ArticleDao articleDao;
-	
+
 	public ArticleService() {
 		articleDao = new ArticleDao();
 	}
 
-	public int write(int memberId, String title, String body) {
-		return articleDao.write(memberId, title, body);
+	public int write(int boardId, int memberId, String title, String body) {
+		return articleDao.write(boardId, memberId, title, body);
 	}
 
 	public List<Article> getForPrintArticles() {
@@ -24,5 +24,5 @@ public class ArticleService {
 	public int makeBoard(String name) {
 		return articleDao.makeBoard(name);
 	}
-	
+
 }
