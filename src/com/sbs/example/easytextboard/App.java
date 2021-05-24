@@ -6,16 +6,41 @@ import com.sbs.example.easytextboard.container.Container;
 import com.sbs.example.easytextboard.controller.ArticleController;
 import com.sbs.example.easytextboard.controller.Controller;
 import com.sbs.example.easytextboard.controller.MemberController;
+import com.sbs.example.easytextboard.service.ArticleService;
+import com.sbs.example.easytextboard.service.MemberService;
 
 public class App {
 	MemberController memberController;
 	ArticleController articleController;
-	
+
 	public App() {
-		memberController = new MemberController();
-		articleController = new ArticleController();
+		memberController = Container.memberController;
+		articleController = Container.articleController;
+
+		makeTestData();
 	}
-	
+
+	private void makeTestData() {
+		// 회원 2명 생성
+		MemberService memberService = Container.memberService;
+		int firstMemberId = memberService.join("aaa", "aaa", "aaa");
+		int secondMemberId = memberService.join("bbb", "bbb", "bbb");
+
+		// 공지사항 게시판 생성
+		ArticleService articleService = Container.articleService;
+		int noticeBoardId = articleService.makeBoard("공지사항");
+
+		// 1번 회원이 공지사항 게시물 5개 작성
+		for (int i = 1; i <= 5; i++) {
+			articleService.write(noticeBoardId, firstMemberId, "제목" + i, "내용" + i);
+		}
+
+		// 2번 회원이 공지사항 게시물 5개 작성
+		for (int i = 1; i <= 5; i++) {
+			articleService.write(noticeBoardId, secondMemberId, "제목" + i, "내용" + i);
+		}
+	}
+
 	public void run() {
 		Scanner sc = Container.scanner;
 
@@ -38,11 +63,11 @@ public class App {
 		if (cmd.startsWith("member ")) {
 			return memberController;
 		}
-		
+
 		if (cmd.startsWith("article ")) {
 			return articleController;
 		}
-		
+
 		return null;
 	}
 }
