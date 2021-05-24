@@ -9,7 +9,7 @@ import com.sbs.example.easytextboard.container.Container;
 import com.sbs.example.easytextboard.service.ArticleService;
 import com.sbs.example.easytextboard.service.MemberService;
 
-public class ArticleController {
+public class ArticleController extends Controller {
 	private ArticleService articleService;
 	private MemberService memberService;
 	
