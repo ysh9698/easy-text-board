@@ -1,6 +1,7 @@
 package com.sbs.example.easytextboard.Dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.sbs.example.easytextboard.Dto.Article;
@@ -38,13 +39,15 @@ public class ArticleDao {
 
 	public List<Article> getForPrintArticles(int boardId) {
 		List<Article> newArticles = new ArrayList<>();
-		
+
 		for (Article article : articles) {
 			if (article.boardId == boardId) {
 				newArticles.add(article);
 			}
 		}
-		
+
+		Collections.reverse(newArticles);
+
 		return newArticles;
 	}
 
