@@ -17,8 +17,8 @@ public class ArticleService {
 		return articleDao.write(boardId, memberId, title, body);
 	}
 
-	public List<Article> getForPrintArticles() {
-		return articleDao.getForPrintArticles();
+	public List<Article> getForPrintArticles(int boardId) {
+		return articleDao.getForPrintArticles(boardId);
 	}
 
 	public int makeBoard(String name) {
@@ -29,10 +29,10 @@ public class ArticleService {
 		return articleDao.getBoardById(boardId);
 	}
 
-	public int getFirstBoardId() {
+	public int getDefaultBoardId() {
 		List<Board> boards = articleDao.getBoards();
 
-		return boards.get(0).id;
+		return boards.get(1).id;
 	}
 
 }
